@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 public class Dibujo01 extends AppCompatActivity {
@@ -46,6 +47,14 @@ public class Dibujo01 extends AppCompatActivity {
             pincel.setTextSize(30);
             pincel.setAntiAlias(true);
             canvas.drawText("ANCHO= "+ ancho + " ," + " ALTO= " + alto, 40,40, pincel);
+
+            pincel.setColor(Color.rgb(100,20,0));
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            canvas.drawLine((float) (metrics.widthPixels*0.5), 80, metrics.widthPixels,80, pincel);
+            pincel.setColor(Color.rgb(0, 100, 20));
+            canvas.drawLine((float) (metrics.widthPixels*0.5), 80, (float) (metrics.widthPixels*0.5), metrics.heightPixels, pincel);
+            canvas.drawLine((float) (metrics.widthPixels*0.5), (float)((metrics.heightPixels-80)*0.5), metrics.widthPixels,(float)((metrics.heightPixels-80)*0.5), pincel );
         }
     }
 }
